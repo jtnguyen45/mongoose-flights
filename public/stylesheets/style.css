@@ -14,3 +14,7 @@ a {
 #flights-table th {
   border-color: #96D4D4;
 }
+
+.ticket-info {
+  display: inline;
+}
