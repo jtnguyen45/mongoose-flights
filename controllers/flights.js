@@ -30,6 +30,6 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    const flight = await Flight.findById(req.params.id)
+    const flight = await Flight.findById(req.params.id).populate('destinations');
     res.render('flights/show', { title: 'Flights Detail', flight});
 }

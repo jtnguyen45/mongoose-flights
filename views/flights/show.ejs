@@ -1,16 +1,32 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Airline: </div>
-    <div><%= flight.airline %></div>
-    <div>Airport: </div>
-    <div><%= flight.airport %></div>
-    <div>Flight #: </div>
-    <div><%= flight.flightNo %></div>
-    <div>Departure Date: </div>
-    <div><%= new Date(flight.departs).toLocaleDateString() %></div>
-    <div>Departure Time: </div>
-    <div><%= new Date(flight.departs).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) %></div>
+    <p><b>Airline:</b> <%= flight.airline %></p>
+    <p><b>Airport:</b> <%= flight.airport %></p>
+    <p><b>Flight #:</b> <%= flight.flightNo %></p>
+    <p><b>Departure Date:</b> <%= new Date(flight.departs).toLocaleDateString() %></p>
+    <p><b>Departure Time:</b> <%= new Date(flight.departs).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) %></p>
+    <p><b>Destinations:</b></p>
+    <ul>
+        <% flight.destinations.forEach(d => { %>
+            <li><%= d.airport %> - <%= new Date(d.arrival).toLocaleDateString() %> at <%= new Date(d.arrival).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) %></li>
+        <% }); %>
+    </ul>
 </section>
+
+<h3>Add Destination:</h3>
+<form id="add-des-to-flight" action="/flights/<%= flight._id %>/destinations" method="POST">
+    <label>Airport: </label>
+    <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+      </select>
+    <label>Arrival Date/Time:</label>
+    <input type="datetime-local" name="arrival">
+    <button type="submit">Add to Flight</button>
+</form>
 
 <%- include('../partials/footer') %>
