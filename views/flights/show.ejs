@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Flight #: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure Date: </div>
+    <div><%= new Date(flight.departs).toLocaleDateString() %></div>
+    <div>Departure Time: </div>
+    <div><%= new Date(flight.departs).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) %></div>
+</section>
+
+<%- include('../partials/footer') %>

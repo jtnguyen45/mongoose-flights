@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.airplane-img {
+  width: 80%;
+}
+
+#flights-table th {
+  border-color: #96D4D4;
+}
